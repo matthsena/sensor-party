@@ -13,6 +13,11 @@ export default function Home(props: any) {
       <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Magnetometer')}>
         <Text>Magnetômetro</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Barometer')}>
+        <Text>Barómetro</Text>
+      </TouchableOpacity>
+
       <StatusBar style="auto" />
     </View>
   );
