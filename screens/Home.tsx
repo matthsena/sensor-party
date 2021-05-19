@@ -22,6 +22,10 @@ export default function Home(props: any) {
         <Text>Giroscópio</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Accelerometer')}>
+        <Text>Acelerômetro</Text>
+      </TouchableOpacity>
+
       <StatusBar style="auto" />
     </View>
   );
