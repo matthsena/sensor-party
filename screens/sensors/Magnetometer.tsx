@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Magnetometer } from 'expo-sensors';
 import { Subscription } from 'expo-sensors/build/Pedometer';
 
-interface Coordinates {
+export interface Coordinates {
   x: number,
   y: number,
   z: number

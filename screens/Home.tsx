@@ -18,6 +18,10 @@ export default function Home(props: any) {
         <Text>Barómetro</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Gyroscope')}>
+        <Text>Giroscópio</Text>
+      </TouchableOpacity>
+
       <StatusBar style="auto" />
     </View>
   );
