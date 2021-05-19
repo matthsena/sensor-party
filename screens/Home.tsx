@@ -7,7 +7,7 @@ export default function Home(props: any) {
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Pedometer')}>
-        <Text>Pedometro</Text>
+        <Text>Pedômetro</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
