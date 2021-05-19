@@ -9,6 +9,10 @@ export default function Home(props: any) {
       <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Pedometer')}>
         <Text>Pedômetro</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Magnetometer')}>
+        <Text>Magnetômetro</Text>
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
