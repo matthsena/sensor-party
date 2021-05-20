@@ -1,29 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet, Dimensions } from 'react-native'
 import { Magnetometer } from 'expo-sensors';
 import { Subscription } from 'expo-sensors/build/Pedometer';
 import { Navigator } from '../../../routes'
-import { Container } from '../../components/Styled'
 import { StatusBar } from 'expo-status-bar';
+import BarChart from '../../components/BarChart'
 
 export interface Coordinates {
-  x: number,
-  y: number,
-  z: number
+  x: number[],
+  y: number[],
+  z: number[]
 }
 
 export default function ScreenMagnetometer({ navigation }: { navigation: Navigator }) {
   const subscription = useRef<Subscription>()
 
   const [data, setData] = useState<Coordinates>({
-    x: 0,
-    y: 0,
-    z: 0,
+    x: [0],
+    y: [0],
+    z: [0],
   });
 
   const MagnetometerSub = () => {
+
     subscription.current = Magnetometer.addListener(result => {
-      setData(result);
+      const x = [parseFloat(result.x.toFixed(2))]
+      const y = [parseFloat(result.y.toFixed(2))]
+      const z = [parseFloat(result.z.toFixed(2))]
+
+      setData({ x, y, z });
     })
   };
 
@@ -44,18 +49,30 @@ export default function ScreenMagnetometer({ navigation }: { navigation: Navigat
         headerTintColor: '#fff',
       })
 
+    setTimeout(() => {
+      Magnetometer.setUpdateInterval(100)
+
+    }, 100)
+
+
     return () => {
       MagnetometerUnsub()
     }
   }, [])
 
   return (
-    <Container>
-      <Text>X: {data.x}</Text>
-      <Text>Y: {data.y}</Text>
-      <Text>Z: {data.z}</Text>
-
+    <View style={styles.container}>
+      <BarChart data={data} />
       <StatusBar style="light" />
-    </Container>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  }
+})
