@@ -3,8 +3,10 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Gyroscope } from 'expo-sensors';
 import { Coordinates } from './Magnetometer'
 import { Subscription } from 'expo-sensors/build/Pedometer';
+import { Navigator } from '../../../routes'
+import { Container } from '../../components/Styled';
 
-export default function GyroscopeScreen() {
+export default function GyroscopeScreen({ navigation }: { navigation: Navigator }) {
   const subscription = useRef<Subscription>()
 
   const [data, setData] = useState<Coordinates>({
@@ -27,6 +29,15 @@ export default function GyroscopeScreen() {
   useEffect(() => {
     GyroscopeSub()
 
+    navigation.setOptions(
+      {
+        title: 'Giroscópio',
+        headerStyle: {
+          backgroundColor: '#F9C534',
+        },
+        headerTintColor: '#000',
+      })
+
     return () => {
       GyroscopeUnsub()
     }
@@ -34,18 +45,10 @@ export default function GyroscopeScreen() {
 
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>X: {data.x}</Text>
       <Text>Y: {data.y}</Text>
       <Text>Z: {data.z}</Text>
-    </View>
+    </Container>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})

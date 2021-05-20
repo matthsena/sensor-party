@@ -1,10 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Container, Description, CardButton, Title, Row, ButtonText } from '../components/Styled'
 import LottieView from 'lottie-react-native';
-
-const emotionLogo = 'https://cdn.rawgit.com/emotion-js/emotion/main/emotion.png'
 
 export default function Home(props: any) {
   return (
@@ -79,7 +77,7 @@ export default function Home(props: any) {
 
       </Row>
 
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </Container>
   );
 }

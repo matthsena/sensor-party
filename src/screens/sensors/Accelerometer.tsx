@@ -3,8 +3,10 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Accelerometer } from 'expo-sensors';
 import { Coordinates } from './Magnetometer'
 import { Subscription } from 'expo-sensors/build/Pedometer';
+import { Navigator } from '../../../routes'
+import { Container } from '../../components/Styled'
 
-export default function ScreenAccelerometer() {
+export default function ScreenAccelerometer({ navigation }: { navigation: Navigator }) {
   const subscription = useRef<Subscription>()
 
   const [data, setData] = useState<Coordinates>({
@@ -26,25 +28,27 @@ export default function ScreenAccelerometer() {
   useEffect(() => {
     AccelerometerSub()
 
+    navigation.setOptions(
+      {
+        title: 'Acelerômetro',
+        headerStyle: {
+          backgroundColor: '#3FF2E3',
+        },
+        headerTintColor: '#000',
+      })
+
     return () => {
       AccelerometerUnsub()
     }
   }, [])
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>X: {data.x}</Text>
       <Text>Y: {data.y}</Text>
       <Text>Z: {data.z}</Text>
-    </View>
+    </Container>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
 

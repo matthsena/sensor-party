@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Pedometer } from 'expo-sensors'
+import { Navigator } from '../../../routes'
+import { Container } from '../../components/Styled'
+import { StatusBar } from 'expo-status-bar';
 
-export default function PedometerScreen() {
+export default function PedometerScreen({ navigation }: { navigation: Navigator }) {
   const subscription = useRef<Pedometer.Subscription>()
 
   const [state, setState] = useState('checking')
@@ -11,6 +14,15 @@ export default function PedometerScreen() {
 
   useEffect(() => {
     PedometerSub()
+
+    navigation.setOptions(
+      {
+        title: 'Pedômetro',
+        headerStyle: {
+          backgroundColor: '#3C2EDB',
+        },
+        headerTintColor: '#fff',
+      })
 
     return () => {
       PedometerUnsub()
@@ -55,20 +67,14 @@ export default function PedometerScreen() {
 
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>Pedômetro está disponível: {state}</Text>
 
       <Text>Passos dados no dia: {pastSteps}</Text>
 
       <Text>Passos atual: {steps}</Text>
-    </View>
+
+      <StatusBar style="light" />
+    </Container>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})

@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from 'react'
 import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
 import { Barometer } from 'expo-sensors'
 import { Subscription } from 'expo-sensors/build/Pedometer';
+import { Navigator } from '../../../routes'
+import { Container } from '../../components/Styled';
 
-
-export default function BarometerScreen() {
+export default function BarometerScreen({ navigation }: { navigation: Navigator }) {
   const subscription = useRef<Subscription>()
 
 
@@ -24,6 +25,16 @@ export default function BarometerScreen() {
 
   useEffect(() => {
     BarometerSub()
+
+    navigation.setOptions(
+      {
+        title: 'Barômetro',
+        headerStyle: {
+          backgroundColor: '#73DB2E',
+        },
+        headerTintColor: '#000',
+      })
+
     return () => {
       BarometerUnsub()
     }
@@ -37,7 +48,7 @@ export default function BarometerScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>Pressure: {pressure * 100} Pa</Text>
       <Text>
         Relative Altitude:{' '}
@@ -47,16 +58,11 @@ export default function BarometerScreen() {
       <TouchableOpacity style={styles.button} onPress={() => onReset()}>
         <Text>Resetar</Text>
       </TouchableOpacity>
-    </View>
+    </Container>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   button: {
     padding: 16,
     backgroundColor: '#ffbb00',

@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Magnetometer } from 'expo-sensors';
 import { Subscription } from 'expo-sensors/build/Pedometer';
+import { Navigator } from '../../../routes'
+import { Container } from '../../components/Styled'
+import { StatusBar } from 'expo-status-bar';
 
 export interface Coordinates {
   x: number,
@@ -9,7 +12,7 @@ export interface Coordinates {
   z: number
 }
 
-export default function ScreenMagnetometer() {
+export default function ScreenMagnetometer({ navigation }: { navigation: Navigator }) {
   const subscription = useRef<Subscription>()
 
   const [data, setData] = useState<Coordinates>({
@@ -32,25 +35,27 @@ export default function ScreenMagnetometer() {
   useEffect(() => {
     MagnetometerSub()
 
+    navigation.setOptions(
+      {
+        title: 'Magnetômetro',
+        headerStyle: {
+          backgroundColor: '#DE006F',
+        },
+        headerTintColor: '#fff',
+      })
+
     return () => {
       MagnetometerUnsub()
     }
   }, [])
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>X: {data.x}</Text>
       <Text>Y: {data.y}</Text>
       <Text>Z: {data.z}</Text>
-    </View>
+
+      <StatusBar style="light" />
+    </Container>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
-
