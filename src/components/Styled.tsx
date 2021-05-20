@@ -33,7 +33,14 @@ export const Row = styled.View`
 export const CardButton = styled.TouchableOpacity`
   flex: 1;
   padding: 14px;
-  background-color: #ffbb00;
+  background-color: ${(props: any) =>
+    props.purple ? props.theme.purple :
+      props.pink ? props.theme.pink :
+        props.cyan ? props.theme.cyan :
+          props.green ? props.theme.green :
+            props.yellow ? props.theme.yellow :
+              props.theme.pink
+  };
   margin: 4px;
   border-radius: 32px;
   min-height: 25%;
@@ -42,7 +49,7 @@ export const CardButton = styled.TouchableOpacity`
 `
 
 export const ButtonText = styled.Text`
-  color: #000;
+  color: ${(props: any) => props.white ? '#FFF' : '#000'};
   font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;
