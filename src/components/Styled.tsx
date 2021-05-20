@@ -45,7 +45,16 @@ export const CardButton = styled.TouchableOpacity`
   border-radius: 32px;
   min-height: 25%;
   flex-direction: row;
-  elevation: 5;
+`
+
+export const LottieContainer = styled.View`
+  flex: 1;
+  padding: 16px;
+  background-color: #eee;
+  margin: 8px 0;
+  border-radius: 32px;
+  min-height: 40%;
+  flex-direction: row;
 `
 
 export const ButtonText = styled.Text`
