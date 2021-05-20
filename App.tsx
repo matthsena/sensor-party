@@ -8,8 +8,8 @@ export interface Theme {
 }
 
 const theme: Theme = {
-  color: 'hotpink',
-  backgroundColor: 'purple'
+  color: '#FFF',
+  backgroundColor: '#DE006F'
 }
 
 

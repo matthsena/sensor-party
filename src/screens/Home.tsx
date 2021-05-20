@@ -1,33 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Container, Description, Image } from '../components/Styled'
+import { StyleSheet, Text } from 'react-native';
+import { Container, Description, CardButton, Title, Row, ButtonText } from '../components/Styled'
 
 const emotionLogo = 'https://cdn.rawgit.com/emotion-js/emotion/main/emotion.png'
 
 export default function Home(props: any) {
   return (
     <Container>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Pedometer')}>
-        <Text>Pedômetro</Text>
-      </TouchableOpacity>
+      <Title>Awesome Sensors 🤖</Title>
+      <Description>An Expo sensors experience 👨‍🔬</Description>
 
-      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Magnetometer')}>
-        <Text>Magnetômetro</Text>
-      </TouchableOpacity>
+      <Row>
+        <CardButton style={styles.button} onPress={() => props.navigation.navigate('Accelerometer')}>
+          <ButtonText>Acelerômetro</ButtonText>
+        </CardButton>
+      </Row>
 
-      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Barometer')}>
-        <Text>Barómetro</Text>
-      </TouchableOpacity>
+      <Row>
+        <CardButton onPress={() => props.navigation.navigate('Pedometer')}>
+          <ButtonText>Pedômetro</ButtonText>
+        </CardButton>
 
-      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Gyroscope')}>
-        <Text>Giroscópio</Text>
-      </TouchableOpacity>
+        <CardButton onPress={() => props.navigation.navigate('Magnetometer')}>
+          <ButtonText>Magnetômetro</ButtonText>
+        </CardButton>
+      </Row>
 
-      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Accelerometer')}>
-        <Text>Acelerômetro</Text>
-      </TouchableOpacity>
+
+      <Row>
+        <CardButton style={styles.button} onPress={() => props.navigation.navigate('Barometer')}>
+          <ButtonText>Barómetro</ButtonText>
+        </CardButton>
+
+        <CardButton style={styles.button} onPress={() => props.navigation.navigate('Gyroscope')}>
+          <ButtonText>Giroscópio</ButtonText>
+        </CardButton>
+
+      </Row>
 
       <StatusBar style="auto" />
     </Container>
