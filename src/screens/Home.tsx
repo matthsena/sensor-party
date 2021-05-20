@@ -12,28 +12,28 @@ export default function Home(props: any) {
       <Description>An Expo sensors experience 👨‍🔬</Description>
 
       <Row>
-        <CardButton style={styles.button} onPress={() => props.navigation.navigate('Accelerometer')}>
+        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Accelerometer')}>
           <ButtonText>Acelerômetro</ButtonText>
         </CardButton>
       </Row>
 
       <Row>
-        <CardButton onPress={() => props.navigation.navigate('Pedometer')}>
+        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Pedometer')}>
           <ButtonText>Pedômetro</ButtonText>
         </CardButton>
 
-        <CardButton onPress={() => props.navigation.navigate('Magnetometer')}>
+        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Magnetometer')}>
           <ButtonText>Magnetômetro</ButtonText>
         </CardButton>
       </Row>
 
 
       <Row>
-        <CardButton style={styles.button} onPress={() => props.navigation.navigate('Barometer')}>
+        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Barometer')}>
           <ButtonText>Barómetro</ButtonText>
         </CardButton>
 
-        <CardButton style={styles.button} onPress={() => props.navigation.navigate('Gyroscope')}>
+        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Gyroscope')}>
           <ButtonText>Giroscópio</ButtonText>
         </CardButton>
 
@@ -45,14 +45,15 @@ export default function Home(props: any) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    padding: 16,
-    backgroundColor: '#ffbb00',
-    marginVertical: 16,
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 1.5,
+
+    elevation: 2,
   }
 });

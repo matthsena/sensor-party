@@ -38,6 +38,7 @@ export const CardButton = styled.TouchableOpacity`
   border-radius: 32px;
   min-height: 25%;
   flex-direction: row;
+  elevation: 5;
 `
 
 export const ButtonText = styled.Text`
