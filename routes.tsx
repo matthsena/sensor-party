@@ -8,6 +8,18 @@ import Gyroscope from './src/screens/sensors/Gyroscope'
 import Magnetometer from './src/screens/sensors/Magnetometer'
 import Pedometer from './src/screens/sensors/Pedometer'
 
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type RootStackParamList = {
+  Home: undefined;
+  Accelerometer: undefined;
+  Barometer: undefined;
+  Gyroscope: undefined;
+  Magnetometer: undefined;
+  Pedometer: undefined;
+};
+
+export type Navigator = StackNavigationProp<RootStackParamList>;
 
 const Stack = createStackNavigator();
 
