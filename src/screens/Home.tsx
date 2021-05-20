@@ -27,22 +27,53 @@ export default function Home(props: any) {
       </Row>
 
       <Row>
-        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Accelerometer')}>
-          <ButtonText white>Acelerômetro</ButtonText>
+
+        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Magnetometer')}>
+
+          <LottieView
+            source={require('../lottiefiles/yellow-compass.json')}
+            autoPlay
+            loop
+          />
+
+          <ButtonText white>Magnetômetro</ButtonText>
         </CardButton>
 
-        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Magnetometer')} cyan>
-          <ButtonText>Magnetômetro</ButtonText>
+        <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Accelerometer')} cyan>
+
+          <LottieView
+            source={require('../lottiefiles/speed.json')}
+            autoPlay
+            loop
+          />
+
+          <ButtonText>Acelerômetro</ButtonText>
         </CardButton>
+
+
       </Row>
 
 
       <Row>
         <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Barometer')} green>
+
+          <LottieView
+            source={require('../lottiefiles/cloud.json')}
+            autoPlay
+            loop
+          />
+
           <ButtonText>Barómetro</ButtonText>
         </CardButton>
 
         <CardButton style={styles.shadow} onPress={() => props.navigation.navigate('Gyroscope')} yellow>
+
+          <LottieView
+            source={require('../lottiefiles/globo.json')}
+            autoPlay
+            loop
+          />
+
           <ButtonText>Giroscópio</ButtonText>
         </CardButton>
 
