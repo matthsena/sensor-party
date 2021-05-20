@@ -1,10 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Container, Description, Image } from '../components/Styled'
+
+const emotionLogo = 'https://cdn.rawgit.com/emotion-js/emotion/main/emotion.png'
 
 export default function Home(props: any) {
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>Open up App.tsx to start working on your app!</Text>
       <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Pedometer')}>
         <Text>Pedômetro</Text>
@@ -27,7 +30,7 @@ export default function Home(props: any) {
       </TouchableOpacity>
 
       <StatusBar style="auto" />
-    </View>
+    </Container>
   );
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from './screens/Home'
-import Accelerometer from './screens/sensors/Accelerometer'
-import Barometer from './screens/sensors/Barometer'
-import Gyroscope from './screens/sensors/Gyroscope'
-import Magnetometer from './screens/sensors/Magnetometer'
-import Pedometer from './screens/sensors/Pedometer'
+import Home from './src/screens/Home'
+import Accelerometer from './src/screens/sensors/Accelerometer'
+import Barometer from './src/screens/sensors/Barometer'
+import Gyroscope from './src/screens/sensors/Gyroscope'
+import Magnetometer from './src/screens/sensors/Magnetometer'
+import Pedometer from './src/screens/sensors/Pedometer'
 
 
 const Stack = createStackNavigator();
