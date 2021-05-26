@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { Platform, Text, StyleSheet } from 'react-native'
 import { Pedometer } from 'expo-sensors'
 import { Navigator } from '../../../routes'
 import { ButtonText, LottieContainer, Container, Row } from '../../components/Styled'
@@ -10,7 +10,7 @@ export default function PedometerScreen({ navigation }: { navigation: Navigator 
   const subscription = useRef<Pedometer.Subscription>()
 
   const [state, setState] = useState('checking')
-  const [pastSteps, setPastSteps] = useState<number>()
+  const [pastSteps, setPastSteps] = useState<number>(0)
   const [steps, setSteps] = useState<number>(0)
 
   useEffect(() => {
@@ -51,14 +51,17 @@ export default function PedometerScreen({ navigation }: { navigation: Navigator 
 
     start.setDate(end.getDate() - 1);
 
-    Pedometer.getStepCountAsync(start, end).then(
-      result => {
-        setPastSteps(result.steps);
-      },
-      error => {
-        throw new Error(error);
-      }
-    );
+    if (Platform.OS === 'ios') {
+      Pedometer.getStepCountAsync(start, end).then(
+        result => {
+          setPastSteps(result.steps);
+        },
+        error => {
+          throw new Error(error);
+        }
+      );
+    }
+
   }
 
   const PedometerUnsub = () => {
@@ -95,10 +98,10 @@ export default function PedometerScreen({ navigation }: { navigation: Navigator 
           />
           <ButtonText style={styles.secondaryText}>
             <Text style={styles.valueText}>
-              {(pastSteps || 0) + steps}
+              {Platform.OS === 'ios' ? ((pastSteps || 0) + steps) : ""}
               {' '}
             </Text>
-            passos nas últimas 24h
+            {Platform.OS !== 'ios' ? "Últimas 24h: Apenas para iOS" : "passos nas últimas 24h"}
           </ButtonText>
         </LottieContainer>
       </Row>
