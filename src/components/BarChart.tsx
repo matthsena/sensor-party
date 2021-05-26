@@ -1,65 +1,84 @@
 import React from 'react'
 import { View, Text, StyleSheet, Dimensions } from 'react-native'
-import { Row } from './Styled'
-import { BarChart } from 'react-native-svg-charts'
-
+import { DefaultCard } from './Styled'
 const { width, height } = Dimensions.get('window')
 
 export interface Coordinates {
-  x: number[],
-  y: number[],
-  z: number[]
+  x: string,
+  y: string,
+  z: string,
 }
 
-
 export default function BarChartComponent({ data }: { data: Coordinates }) {
+
   return (
     <>
-      <Row style={{ height: height * 0.4, width: width - 32 }}>
-        <BarChart
-          style={{ flex: 1 }}
+      <DefaultCard style={styles.shadow}>
+        <View style={styles.textWrapper}>
+          <Text style={{ ...styles.text, ...styles.textX }}>
+            <Text style={styles.textAxis}>
+              X =
+            </Text>
+            {' '}{data.x}
+          </Text>
 
-          data={[
-            {
-              data: data.x,
-              svg: { fill: '#DE006F' },
-            },
-            {
-              data: data.y,
-              svg: { fill: '#3C2EDB' },
-            },
-            {
-              data: data.z,
-              svg: { fill: '#F9C534' },
-            }
-          ]}
-          contentInset={{ top: 10, bottom: 10 }}
-        >
-        </BarChart>
-      </Row>
-
-      <Text style={{ ...styles.text, ...styles.textX }}>X: {data.x}</Text>
-
-      <Text style={{ ...styles.text, ...styles.textY }}>Y: {data.y}</Text>
-
-      <Text style={{ ...styles.text, ...styles.textZ }}>Z: {data.z}</Text>
+          <Text style={{ ...styles.text, ...styles.textY }}>
+            <Text style={styles.textAxis}>
+              Y =
+            </Text>
+            {' '}{data.y}
+          </Text>
+          <Text style={{ ...styles.text, ...styles.textZ }}>
+            <Text style={styles.textAxis}>
+              Z =
+            </Text>
+            {' '}{data.z}
+          </Text>
+        </View>
+      </DefaultCard>
     </>
   )
 }
 
 const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 1.5,
+    elevation: 2,
+  },
+  container: {
+    padding: 16,
+    height: height * 0.4,
+    width: width - 32,
+    backgroundColor: '#eee',
+    borderRadius: 32
+  },
+  textWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   text: {
-    fontWeight: 'bold',
     fontSize: 24,
-    marginTop: 16
+    marginTop: 16,
+  },
+  textAxis: {
+    fontWeight: 'bold',
+    fontSize: 32,
+    fontStyle: 'italic',
   },
   textX: {
     color: '#DE006F',
   },
   textY: {
-    color: '#3C2EDB'
+    color: '#F9C534'
   },
   textZ: {
-    color: '#F9C534'
+    color: '#73DB2E'
   }
 })

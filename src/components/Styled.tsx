@@ -56,6 +56,14 @@ export const LottieContainer = styled.View`
   min-height: 40%;
   flex-direction: row;
 `
+export const DefaultCard = styled.View`
+  padding: 16px;
+  background-color: #000;
+  margin: 8px 0;
+  border-radius: 32px;
+  min-height: 40%;
+  width: 100%;
+`
 
 export const ButtonText = styled.Text`
   color: ${(props: any) => props.white ? '#FFF' : '#000'};
