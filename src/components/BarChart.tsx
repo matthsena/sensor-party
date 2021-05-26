@@ -79,6 +79,6 @@ const styles = StyleSheet.create({
     color: '#F9C534'
   },
   textZ: {
-    color: '#73DB2E'
+    color: '#3FF2E3'
   }
 })

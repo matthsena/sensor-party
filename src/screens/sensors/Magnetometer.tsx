@@ -85,8 +85,6 @@ export default function ScreenMagnetometer({ navigation }: { navigation: Navigat
     <Container>
       <BarChart data={data} />
 
-
-
       <Row>
         <LottieContainer style={{ ...styles.shadow, ...styles.secondaryCard }}>
           <LottieView
@@ -103,12 +101,6 @@ export default function ScreenMagnetometer({ navigation }: { navigation: Navigat
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
-  },
   shadow: {
     shadowColor: "#000",
     shadowOffset: {
